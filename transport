@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source /usr/lib/openfoam/openfoam2112/etc/bashrc
+
+#echo surfaceTransformPoints -rotate-angle \'$1\' $2 $3
+#echo surfaceTransformPoints -rotate-angle \'$4\' $5 $6
+#
+#surfaceTransformPoints -rotate-angle \'$1\' $2 $3
+#surfaceTransformPoints -rotate-angle \'$4\' $5 $6
