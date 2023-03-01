@@ -27,9 +27,10 @@ class Simulation:
         left_c = str(Path(self.current_stl, 'left.stl'))
         right = str(Path(self.initial_stl, 'right.stl'))
         left = str(Path(self.initial_stl, 'left.stl'))
-        left_rotate = r"'((-0.000188 0.0540462 -0.0029555) " + str(commands.second_motor) + r")'"
-        right_rotate = r"'((0.000188 0.0540462 0.0029555)  " + str(commands.first_motor) + r")'"
+        left_rotate = str(commands.second_motor)
+        right_rotate = str(commands.first_motor)
         os.system(f'./transport {right_rotate} {right} {right_c} {right_rotate} {left} {left_c}')
+        print(f'./transport {right_rotate} {right} {right_c} {right_rotate} {left} {left_c}')
     def compute_model(self) -> None:
         os.system(f'pvpython render2.py -p {self.current_stl}')
 
