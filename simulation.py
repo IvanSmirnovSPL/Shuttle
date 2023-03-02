@@ -22,15 +22,9 @@ class Simulation:
         return sensors
 
     def change_model(self, commands: Commands) -> None:
-        commands.first_motor = 10
-        right_c = str(Path(self.current_stl, 'right.stl'))
-        left_c = str(Path(self.current_stl, 'left.stl'))
-        right = str(Path(self.initial_stl, 'right.stl'))
-        left = str(Path(self.initial_stl, 'left.stl'))
-        left_rotate = str(commands.second_motor)
-        right_rotate = str(commands.first_motor)
-        os.system(f'./transport {right_rotate} {right} {right_c} {right_rotate} {left} {left_c}')
-        print(f'./transport {right_rotate} {right} {right_c} {right_rotate} {left} {left_c}')
+        r_v = "_".join('0.036011 0 0.0579403'.split())
+        l_v = "_".join('-0.000188 0.0540462 -0.0029555'.split())
+        os.system(f"./transform {str(Path(self.initial_stl, 'right.stl'))} {str(Path(self.current_stl, 'right.stl'))} {r_v} {commands.first_motor} {str(Path(self.initial_stl, 'left.stl'))} {str(Path(self.current_stl, 'left.stl'))} {l_v} {commands.second_motor}")
     def compute_model(self) -> None:
         os.system(f'pvpython render2.py -p {self.current_stl}')
 

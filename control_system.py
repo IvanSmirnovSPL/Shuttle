@@ -4,11 +4,11 @@ from RS232 import Servos
 class ControlSystem:
     def __init__(self, _settings: Settings):
         self.settings = _settings
-        # self.motors = Servos(
-        #     angle1=_settings.initial_state.first_motor,
-        #     angle2=_settings.initial_state.second_motor,
-        #     angle3=_settings.initial_state.third_motor,
-        # )
+        self.motors = Servos(
+            angle1=_settings.initial_state.first_motor,
+            angle2=_settings.initial_state.second_motor,
+            angle3=_settings.initial_state.third_motor,
+        )
         self.count = 0
         self.sign = 1
 
@@ -23,7 +23,6 @@ class ControlSystem:
         return Commands(0, 0, self.count)
 
     def change_state(self, commands: Commands) -> None:
-        pass
-        # self.motors.rotate(int(commands.first_motor), n=1)
-        # self.motors.rotate(int(commands.second_motor), n=2)
-        # self.motors.rotate(int(commands.third_motor), n=3)
+        self.motors.rotate(int(commands.first_motor), n=1)
+        self.motors.rotate(int(commands.second_motor), n=2)
+        self.motors.rotate(int(commands.third_motor), n=3)
