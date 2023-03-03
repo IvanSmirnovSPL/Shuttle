@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source /usr/lib/openfoam/openfoam2112/etc/bashrc
+
+python3 transform.py $1 $2 $3 $4 $5 $6 $7 $8 $9 ${10}
+
