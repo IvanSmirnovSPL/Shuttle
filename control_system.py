@@ -13,16 +13,17 @@ class ControlSystem:
         self.sign = 1
 
     def tick(self, sensors: Sensors) -> Commands:
-        self.sign = - int(self.count / 80) if abs(self.count / 80) == 1 else self.sign
+        self.sign = - int(self.count / 60) if abs(self.count / 60) == 1 else self.sign
         self.count += 20 * self.sign
         commands = self.form_control(sensors)
         self.change_state(commands)
         return commands
 
     def form_control(self, sensors: Sensors) -> Commands:
-        return Commands(0, 0, self.count)
+        return Commands(0, 0, 0)
 
     def change_state(self, commands: Commands) -> None:
+        print(commands.first_motor, commands.second_motor)
         self.motors.rotate(int(commands.first_motor), n=1)
         self.motors.rotate(int(commands.second_motor), n=2)
         self.motors.rotate(int(commands.third_motor), n=3)

@@ -3,7 +3,11 @@ from control_system import ControlSystem
 from support import Settings, Commands
 import time
 
-initial_state = Commands(0, 0, 0)
+#third == green
+#second == yellow == right == + top
+#first == red == left == + top
+
+initial_state = Commands(-25, 0, 0)
 settings = Settings(1, initial_state)
 
 simulation = Simulation(_settings=settings)
